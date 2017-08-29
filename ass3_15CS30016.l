@@ -2,6 +2,9 @@
 #include "ass3_15CS30016.h"
 %}
 
+%option nounput yylineno
+%x comment
+
 UNSIGNED	"unsigned"
 BREAK		"break"
 RETURN		"return"
@@ -30,16 +33,16 @@ ZERO_CONSTANT	"0"
 DIGIT		[0-9]
 NONZERO_DIGIT	[1-9]
 INTEGER_CONSTANT	[1-9][0-9]*
-DIGIT_SEQUENCE	[0-9]*
+DIGIT_SEQUENCE	[0-9]+
 FRACTIONAL_CONSTANT	(({DIGIT_SEQUENCE})?\.{DIGIT_SEQUENCE})|({DIGIT_SEQUENCE}\.)
 SIGN		[+-]
 EXPONENT_PART	[Ee]({SIGN})?{DIGIT_SEQUENCE}
 FLOATING_CONSTANT	({FRACTIONAL_CONSTANT}({EXPONENT_PART})?)|({DIGIT_SEQUENCE}{EXPONENT_PART})
-ESCAPE_SEQUENCE	\\n|\\'|\\"|\\a|\\b|\\f|\\r|\\t|\\v|\\\\|\\\?
-C_CHAR		(^(\\|\n|'))* | {ESCAPE_SEQUENCE}
+ESCAPE_SEQUENCE	("\\n")|("\\a")|("\\b")|("\\f")|("\\r")|("\\t")|("\\v")|("\\?")|("\\'")|("\\\"")|("\\\\")
+C_CHAR		([^("\\")("\n")("\'")])|{ESCAPE_SEQUENCE}
 C_CHAR_SEQUENCE	{C_CHAR}+
-CHARACTER_CONSTANT	\'{C_CHAR_SEQUENCE}\'
-STRING_LITERAL	"\""{C_CHAR_SEQUENCE}*"\""
+CHARACTER_CONSTANT	"\'"{C_CHAR_SEQUENCE}"\'"
+STRING_LITERAL	"\""{C_CHAR_SEQUENCE}?"\""
 LEFT_SQUARE_BRAC_PUNC	"["
 RIGHT_SQUARE_BRAC_PUNC	"]"
 LEFT_SMALL_BRAC_PUNC	"("
@@ -83,11 +86,11 @@ LEFT_SHIFT_EQUAL_PUNC	"<<="
 RIGHT_SHIFT_EQUAL_PUNC	">>="
 BIT_AND_EQUAL_PUNC	"&="
 XOR_EQUAL_PUNC		"^="
-BIT_OR_EQUAL_PUNC		"|="
+BIT_OR_EQUAL_PUNC	"|="
 COMMA_PUNC		","
 HASTAG_PUNC		"#"
 SINGLE_LINE_COMMENT	"//"[^\r\n]*[\r\n]
-WHITESPACE			[ \t\n]
+WHITESPACE		[ \t\n]
 
 %%
 
@@ -117,7 +120,9 @@ WHITESPACE			[ \t\n]
 {IDENTIFIER}				{ return IDENTIFIER; }
 {INTEGER_CONSTANT}			{ return INTEGER_CONSTANT; }
 {FLOATING_CONSTANT}			{ return FLOATING_CONSTANT; }
+{CHARACTER_CONSTANT}			{ return CHARACTER_CONSTANT; }
 {ZERO_CONSTANT}				{ return ZERO_CONSTANT; }
+{STRING_LITERAL}			{ return STRING_LITERAL; }
 {LEFT_SQUARE_BRAC_PUNC}			{ return LEFT_SQUARE_BRAC_PUNC; }
 {RIGHT_SQUARE_BRAC_PUNC}		{ return RIGHT_SQUARE_BRAC_PUNC; }
 {LEFT_SMALL_BRAC_PUNC}			{ return LEFT_SMALL_BRAC_PUNC; }
@@ -165,15 +170,17 @@ WHITESPACE			[ \t\n]
 {COMMA_PUNC}				{ return COMMA_PUNC; }
 {HASTAG_PUNC}				{ return HASTAG_PUNC; }
 {SINGLE_LINE_COMMENT}			{ return SINGLELINE_COMMENT; }
-{WHITESPACE}					{ /* Ignore whitespace */ }
-.					{ return 0; }
+"/*"					BEGIN(comment);
+<comment>[^*\n]*			/* comment */
+<comment>"*"+[^*/\n]*			/* comment */
+<comment>\n				/* comment */
+<comment>"*"+"/"			BEGIN(INITIAL); { return MULTILINE_COMMENT; }
+{WHITESPACE}				{ /* Ignore whitespace */ }
+.					{ printf ("Unexpected character\n"); }
 
 %%
 
-main(int argc, int* argv) {
-	int token;
-	while (token = yylex()) {
-		printf("%d\n", token);
-	}
+int yywrap (void) {
+	return 1;
 }
 
