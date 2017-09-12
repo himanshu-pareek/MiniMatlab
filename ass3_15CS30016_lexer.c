@@ -316,6 +316,10 @@ int main (int argc, char** argv) {
 				printf("<PUNCTUATOR, %d, %s>\n", token, yytext);
 				break;
 			}
+			case TRANSPOSE_PUNC: {
+				printf("<PUNCTUATOR, %d, %s>\n", token, yytext);
+				break;
+			}
 			default : {
 				printf("Error: Unidentified token : %s", yytext);
 			}

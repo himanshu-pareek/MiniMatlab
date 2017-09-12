@@ -396,7 +396,8 @@
 <IDENTIFIER, 281, mat>
 <PUNCTUATOR, 300, ->
 <IDENTIFIER, 281, mat2>
-Error: Unidentified token : .'<PUNCTUATOR, 317, ;>
+<PUNCTUATOR, 330, .'>
+<PUNCTUATOR, 317, ;>
 <IDENTIFIER, 281, printStr>
 <PUNCTUATOR, 288, (>
 <STRING LITERAL, 286, "Determinant of the matrix is\n">

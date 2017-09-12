@@ -76,7 +76,7 @@ extern int yylex(void);
 %token XOR_EQUAL_PUNC
 %token BIT_OR_EQUAL_PUNC
 %token COMMA_PUNC
-%token INVERSE_PUNC
+%token TRANSPOSE_PUNC
 
 %start translation_unit
 
@@ -100,7 +100,7 @@ postfix_expression	: primary_expression	{ printf ("postfix-expression ==> primar
 			| postfix_expression ARROW_PUNC IDENTIFIER	{ printf ("postfix-expression ==> postfix-expression -> identifier\n"); }
 			| postfix_expression INCREMENT_PUNC	{ printf ("postfix-expression ==> postfix-expression ++\n");  }
 			| postfix_expression DECREMENT_PUNC	{ printf ("postfix-expression ==> postfix-expression --\n");  }
-			| postfix_expression INVERSE_PUNC	{ printf ("postfix-expression ==> .'");  }
+			| postfix_expression TRANSPOSE_PUNC	{ printf ("postfix-expression ==> .'");  }
 			;
 
 argument_expression_list_opt	: argument_expression_list	{ printf ("argument-expression-list-opt ==> argument-expression-list\n");  }
