@@ -1,5 +1,3 @@
-<SINGLE LINE COMMENT>
-<SINGLE LINE COMMENT>
 type-specifier ==> void
 declaration-specifiers-opt ==> EMPTY_STRING
 declaration-specifiers ==> type-specifier declaration-specifiers-opt
@@ -55,6 +53,7 @@ declaration-specifiers ==> type-specifier declaration-specifiers-opt
 pointer-opt ==> EMPTY_STRING
 direct-declarator ==> identifier
 declarator ==> pointer-opt direct-declarator
+constant ==> ZERO_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -77,6 +76,7 @@ init-declarator-list ==> init-declarator
 pointer-opt ==> EMPTY_STRING
 direct-declarator ==> identifier
 declarator ==> pointer-opt direct-declarator
+constant ==> ZERO_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -114,6 +114,7 @@ primary-expression ==> identifier
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
 assignment-operator ==> =
+constant ==> ZERO_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -182,6 +183,7 @@ primary-expression ==> identifier
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
 assignment-operator ==> =
+constant ==> ZERO_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -409,6 +411,7 @@ unary-expression ==> postfix-expression
 cast-expression ==> unary-expression
 multiplicative-expression ==> cast-expression
 additive-expression ==> multiplicative-expression
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -430,6 +433,7 @@ primary-expression ==> identifier
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
 assignment-operator ==> =
+constant ==> ZERO_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -509,7 +513,6 @@ compound-statement ==> { block-item-list-opt }
 function-declaration ==> declaration-specifiers declarator declaration-list-opt compound-statement
 external-declaration ==> function-declaration
 translation-unit ==> external-declaration
-<MULTILINE_COMMENT>
 type-specifier ==> float
 declaration-specifiers-opt ==> EMPTY_STRING
 declaration-specifiers ==> type-specifier declaration-specifiers-opt
@@ -541,6 +544,7 @@ declaration-specifiers ==> type-specifier declaration-specifiers-opt
 pointer-opt ==> EMPTY_STRING
 direct-declarator ==> identifier
 declarator ==> pointer-opt direct-declarator
+constant ==> FLOATING_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -564,7 +568,6 @@ init-declarator-list-opt ==> init-declarator-list
 declaration ==> declaration-specifiers init-declarator-list-opt
 block-item ==> declaration
 block-item-list ==> block-item
-<SINGLE LINE COMMENT>
 primary-expression ==> identifier
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -574,6 +577,7 @@ additive-expression ==> multiplicative-expression
 shift-expression ==> additive-expression
 ralational-expression ==> shift-expression
 equality-expression ==> relartional-expression
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -593,6 +597,7 @@ assignment-expression ==> conditional-expression
 expression ==> assignment-expression
 primary-expression ==> identifier
 postfix-expression ==> primary-expression
+constant ==> ZERO_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -611,6 +616,7 @@ conditional-expression ==> logical-OR-expression
 assignment-expression ==> conditional-expression
 expression ==> assignment-expression
 postfix-expression ==> postfix-expression [ expression ]
+constant ==> ZERO_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -705,6 +711,7 @@ declaration-specifiers ==> type-specifier declaration-specifiers-opt
 pointer-opt ==> EMPTY_STRING
 direct-declarator ==> identifier
 declarator ==> pointer-opt direct-declarator
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -744,6 +751,7 @@ primary-expression ==> identifier
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
 assignment-operator ==> =
+constant ==> ZERO_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -844,6 +852,7 @@ logical-OR-expression ==> logical-AND-expression
 conditional-expression ==> logical-OR-expression
 assignment-expression ==> conditional-expression
 argument-expression-list ==> argument-expression-list , assignment-expression
+constant ==> ZERO_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -928,6 +937,7 @@ cast-expression ==> unary-expression
 multiplicative-expression ==> cast-expression
 primary-expression ==> identifier
 postfix-expression ==> primary-expression
+constant ==> ZERO_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -992,6 +1002,7 @@ unary-expression ==> postfix-expression
 cast-expression ==> unary-expression
 multiplicative-expression ==> cast-expression
 additive-expression ==> multiplicative-expression
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1096,7 +1107,6 @@ compound-statement ==> { block-item-list-opt }
 function-declaration ==> declaration-specifiers declarator declaration-list-opt compound-statement
 external-declaration ==> function-declaration
 translation-unit ==> translation-unit external-declaration
-<MULTILINE_COMMENT>
 type-specifier ==> void
 declaration-specifiers-opt ==> EMPTY_STRING
 declaration-specifiers ==> type-specifier declaration-specifiers-opt
@@ -1151,6 +1161,7 @@ primary-expression ==> identifier
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
 assignment-operator ==> =
+constant ==> ZERO_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1219,6 +1230,7 @@ primary-expression ==> identifier
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
 assignment-operator ==> =
+constant ==> ZERO_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1429,6 +1441,7 @@ declaration-specifiers-opt ==> EMPTY_STRING
 declaration-specifiers ==> type-specifier declaration-specifiers-opt
 pointer-opt ==> EMPTY_STRING
 direct-declarator ==> identifier
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1447,6 +1460,7 @@ conditional-expression ==> logical-OR-expression
 assignment-expression ==> conditional-expression
 assignment-expression-opt ==> assignment-expression
 direct-declarator ==> direct-declarator [ assignment-expression-opt ]
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1467,6 +1481,7 @@ assignment-expression-opt ==> assignment-expression
 direct-declarator ==> direct-declarator [ assignment-expression-opt ]
 declarator ==> pointer-opt direct-declarator
 designation_opt ==> EMPTY_STRING
+constant ==> FLOATING_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1486,6 +1501,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> designation-opt initializer
 designation_opt ==> EMPTY_STRING
+constant ==> FLOATING_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1505,6 +1521,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 designation_opt ==> EMPTY_STRING
+constant ==> FLOATING_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1525,6 +1542,7 @@ initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 designation_opt ==> EMPTY_STRING
 unary-operator ==> -
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1547,6 +1565,7 @@ initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 initializer-row-list ==> initializer-row
 designation_opt ==> EMPTY_STRING
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1566,6 +1585,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> designation-opt initializer
 designation_opt ==> EMPTY_STRING
+constant ==> ZERO_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1585,6 +1605,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 designation_opt ==> EMPTY_STRING
+constant ==> FLOATING_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1604,6 +1625,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 designation_opt ==> EMPTY_STRING
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1623,6 +1645,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 initializer-row-list ==> initializer-row-list ; initializer-rowdesignation_opt ==> EMPTY_STRING
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1642,6 +1665,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> designation-opt initializer
 designation_opt ==> EMPTY_STRING
+constant ==> FLOATING_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1661,6 +1685,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 designation_opt ==> EMPTY_STRING
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1681,6 +1706,7 @@ initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 designation_opt ==> EMPTY_STRING
 unary-operator ==> -
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1702,6 +1728,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 initializer-row-list ==> initializer-row-list ; initializer-rowdesignation_opt ==> EMPTY_STRING
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1721,6 +1748,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> designation-opt initializer
 designation_opt ==> EMPTY_STRING
+constant ==> FLOATING_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1740,6 +1768,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 designation_opt ==> EMPTY_STRING
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1759,6 +1788,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 designation_opt ==> EMPTY_STRING
+constant ==> FLOATING_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1789,6 +1819,7 @@ declaration-specifiers-opt ==> EMPTY_STRING
 declaration-specifiers ==> type-specifier declaration-specifiers-opt
 pointer-opt ==> EMPTY_STRING
 direct-declarator ==> identifier
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1807,6 +1838,7 @@ conditional-expression ==> logical-OR-expression
 assignment-expression ==> conditional-expression
 assignment-expression-opt ==> assignment-expression
 direct-declarator ==> direct-declarator [ assignment-expression-opt ]
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1827,6 +1859,7 @@ assignment-expression-opt ==> assignment-expression
 direct-declarator ==> direct-declarator [ assignment-expression-opt ]
 declarator ==> pointer-opt direct-declarator
 designation_opt ==> EMPTY_STRING
+constant ==> FLOATING_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1846,6 +1879,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> designation-opt initializer
 designation_opt ==> EMPTY_STRING
+constant ==> FLOATING_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1865,6 +1899,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 designation_opt ==> EMPTY_STRING
+constant ==> FLOATING_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1885,6 +1920,7 @@ initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 designation_opt ==> EMPTY_STRING
 unary-operator ==> -
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1907,6 +1943,7 @@ initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 initializer-row-list ==> initializer-row
 designation_opt ==> EMPTY_STRING
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1926,6 +1963,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> designation-opt initializer
 designation_opt ==> EMPTY_STRING
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1945,6 +1983,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 designation_opt ==> EMPTY_STRING
+constant ==> FLOATING_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1964,6 +2003,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 designation_opt ==> EMPTY_STRING
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -1983,6 +2023,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 initializer-row-list ==> initializer-row-list ; initializer-rowdesignation_opt ==> EMPTY_STRING
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -2002,6 +2043,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> designation-opt initializer
 designation_opt ==> EMPTY_STRING
+constant ==> FLOATING_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -2021,6 +2063,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 designation_opt ==> EMPTY_STRING
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -2041,6 +2084,7 @@ initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 designation_opt ==> EMPTY_STRING
 unary-operator ==> -
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -2062,6 +2106,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 initializer-row-list ==> initializer-row-list ; initializer-rowdesignation_opt ==> EMPTY_STRING
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -2081,6 +2126,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> designation-opt initializer
 designation_opt ==> EMPTY_STRING
+constant ==> FLOATING_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -2100,6 +2146,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 designation_opt ==> EMPTY_STRING
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -2119,6 +2166,7 @@ assignment-expression ==> conditional-expression
 initializer ==> assignment-expression
 initializer-row ==> initializer-row , designation-opt initializer
 designation_opt ==> EMPTY_STRING
+constant ==> FLOATING_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -2149,6 +2197,7 @@ declaration-specifiers-opt ==> EMPTY_STRING
 declaration-specifiers ==> type-specifier declaration-specifiers-opt
 pointer-opt ==> EMPTY_STRING
 direct-declarator ==> identifier
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -2167,6 +2216,7 @@ conditional-expression ==> logical-OR-expression
 assignment-expression ==> conditional-expression
 assignment-expression-opt ==> assignment-expression
 direct-declarator ==> direct-declarator [ assignment-expression-opt ]
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -2352,6 +2402,7 @@ logical-OR-expression ==> logical-AND-expression
 conditional-expression ==> logical-OR-expression
 assignment-expression ==> conditional-expression
 argument-expression-list ==> assignment-expression
+constant ==> INTEGER_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression
@@ -2408,6 +2459,7 @@ expression-statement ==> expression-opt ;
 stetement ==> expression-statement
 block-item ==> statement
 block-item-list ==> block-item-list block-item
+constant ==> ZERO_CONSTANT
 primary-expression ==> constant
 postfix-expression ==> primary-expression
 unary-expression ==> postfix-expression

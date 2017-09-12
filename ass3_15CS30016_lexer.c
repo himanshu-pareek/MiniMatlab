@@ -123,11 +123,10 @@ int main (int argc, char** argv) {
 				printf("<IDENTIFIER, %d, %s>\n", token, yytext);
 				break;
 			}
-			case CONSTANT: {
-				printf("<CONSTANT, %d, %s>\n", token, yytext);
+			case INTEGER_CONSTANT: {
+				printf("<INTEGER CONSTANT, %d, %s>\n", token, yytext);
 				break;
 			}
-			/*
 			case FLOATING_CONSTANT: {
 				printf("<FLOATING CONSTANT, %d, %s>\n", token, yytext);
 				break;
@@ -140,7 +139,6 @@ int main (int argc, char** argv) {
 				printf("<ZERO CONSTANT, %d, %s>\n", token, yytext);
 				break;
 			}
-			*/
 			case STRING_LITERAL: {
 				printf("<STRING LITERAL, %d, %s>\n", token, yytext);
 				break;

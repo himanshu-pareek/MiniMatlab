@@ -119,10 +119,10 @@ WHITESPACE		[ \t\n]
 {ELSE}					{ return KEYWORD_ELSE; }
 {MATRIX}				{ return KEYWORD_MATRIX; }
 {IDENTIFIER}				{ return IDENTIFIER; }
-{INTEGER_CONSTANT}			{ return CONSTANT; }
-{FLOATING_CONSTANT}			{ return CONSTANT; }
-{CHARACTER_CONSTANT}			{ return CONSTANT; }
-{ZERO_CONSTANT}				{ return CONSTANT; }
+{INTEGER_CONSTANT}			{ return INTEGER_CONSTANT; }
+{FLOATING_CONSTANT}			{ return FLOATING_CONSTANT; }
+{CHARACTER_CONSTANT}			{ return CHARACTER_CONSTANT; }
+{ZERO_CONSTANT}				{ return ZERO_CONSTANT; }
 {STRING_LITERAL}			{ return STRING_LITERAL; }
 {LEFT_SQUARE_BRAC_PUNC}			{ return LEFT_SQUARE_BRAC_PUNC; }
 {RIGHT_SQUARE_BRAC_PUNC}		{ return RIGHT_SQUARE_BRAC_PUNC; }
@@ -138,8 +138,8 @@ WHITESPACE		[ \t\n]
 {MULT_PUNC}				{ return MULT_PUNC; }
 {PLUS_PUNC}				{ return PLUS_PUNC; }
 {MINUS_PUNC}				{ return MINUS_PUNC; }
-{NEGATION_PUNC}				{ printf ("<NEGATION PUNCTUATOR>\n"); }
-{NOT_PUNC}				{ printf ("<NOT PUNCTUATION>\n"); }
+{NEGATION_PUNC}				{ /* printf ("<NEGATION PUNCTUATOR>\n"); */ }
+{NOT_PUNC}				{ /* printf ("<NOT PUNCTUATION>\n"); */ }
 {DIVIDE_PUNC}				{ return DIVIDE_PUNC; }
 {MOD_PUNC}				{ return MOD_PUNC; }
 {LEFT_SHIFT_PUNC}			{ return LEFT_SHIFT_PUNC; }
@@ -170,13 +170,13 @@ WHITESPACE		[ \t\n]
 {BIT_OR_EQUAL_PUNC}			{ return BIT_OR_EQUAL_PUNC; }
 {COMMA_PUNC}				{ return COMMA_PUNC; }
 {INVERSE_PUNC}				{ return INVERSE_PUNC; }
-{HASTAG_PUNC}				{ printf ("<HASTAG PUNCTUATOR>\n"); }
-{SINGLE_LINE_COMMENT}			{ printf ("<SINGLE LINE COMMENT>\n"); }
+{HASTAG_PUNC}				{ /* printf ("<HASTAG PUNCTUATOR>\n"); */ }
+{SINGLE_LINE_COMMENT}			{ /* printf ("<SINGLE LINE COMMENT>\n"); */ }
 "/*"					BEGIN(comment);
 <comment>[^*\n]*			/* comment */
 <comment>"*"+[^*/\n]*			/* comment */
 <comment>\n				/* comment */
-<comment>"*"+"/"			BEGIN(INITIAL); { printf ("<MULTILINE_COMMENT>\n"); }
+<comment>"*"+"/"			BEGIN(INITIAL); { /* printf ("<MULTILINE_COMMENT>\n"); */ }
 {WHITESPACE}				{ /* Ignore whitespace */ }
 
 %%

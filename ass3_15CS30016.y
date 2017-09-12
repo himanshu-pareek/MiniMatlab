@@ -28,7 +28,10 @@ extern int yylex(void);
 %token KEYWORD_ELSE
 %token KEYWORD_MATRIX
 %token IDENTIFIER
-%token CONSTANT
+%token INTEGER_CONSTANT
+%token FLOATING_CONSTANT
+%token CHARACTER_CONSTANT
+%token ZERO_CONSTANT
 %token STRING_LITERAL
 %token LEFT_SQUARE_BRAC_PUNC
 %token LEFT_SMALL_BRAC_PUNC
@@ -80,11 +83,16 @@ extern int yylex(void);
 %%
 
 primary_expression	: IDENTIFIER	{ printf ("primary-expression ==> identifier\n"); }
-			| CONSTANT	{ printf ("primary-expression ==> constant\n"); }
+			| constant	{ printf ("primary-expression ==> constant\n"); }
 			| STRING_LITERAL	{ printf ("primary-expression ==> string-literal\n"); }
 			| LEFT_SMALL_BRAC_PUNC expression RIGHT_SMALL_BRAC_PUNC	{ printf ("primary-expression ==> ( expression )\n"); }
 			;			
 			
+constant	: INTEGER_CONSTANT { printf ("constant ==> INTEGER_CONSTANT\n"); }
+		| FLOATING_CONSTANT { printf ("constant ==> FLOATING_CONSTANT\n"); }
+		| CHARACTER_CONSTANT	{ printf ("constant ==> CHARACTER_CONSTANT\n"); }
+		| ZERO_CONSTANT	{ printf ("constant ==> ZERO_CONSTANT\n"); }
+
 postfix_expression	: primary_expression	{ printf ("postfix-expression ==> primary-expression\n");  }
 			| postfix_expression LEFT_SQUARE_BRAC_PUNC expression RIGHT_SQUARE_BRAC_PUNC	{ printf ("postfix-expression ==> postfix-expression [ expression ]\n");  }
 			| postfix_expression LEFT_SMALL_BRAC_PUNC argument_expression_list_opt RIGHT_SMALL_BRAC_PUNC	{ printf ("postfix-expression ==> postfix-expression ( argument-expression-list-opt )\n");  }
