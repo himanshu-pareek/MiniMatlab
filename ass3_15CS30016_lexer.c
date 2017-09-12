@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "ass3_15CS30016.h"
+#include "lex.yy.c"
 
 extern int yylex ();
 extern int yylineno;
@@ -123,10 +123,11 @@ int main (int argc, char** argv) {
 				printf("<IDENTIFIER, %d, %s>\n", token, yytext);
 				break;
 			}
-			case INTEGER_CONSTANT: {
-				printf("<INTEGER_CONSTANT, %d, %s>\n", token, yytext);
+			case CONSTANT: {
+				printf("<CONSTANT, %d, %s>\n", token, yytext);
 				break;
 			}
+			/*
 			case FLOATING_CONSTANT: {
 				printf("<FLOATING CONSTANT, %d, %s>\n", token, yytext);
 				break;
@@ -139,6 +140,7 @@ int main (int argc, char** argv) {
 				printf("<ZERO CONSTANT, %d, %s>\n", token, yytext);
 				break;
 			}
+			*/
 			case STRING_LITERAL: {
 				printf("<STRING LITERAL, %d, %s>\n", token, yytext);
 				break;
@@ -199,14 +201,7 @@ int main (int argc, char** argv) {
 				printf("<PUNCTUATOR, %d, %s>\n", token, yytext);
 				break;
 			}
-			case NEGATION_PUNC: {
-				printf("<PUNCTUATOR, %d, %s>\n", token, yytext);
-				break;
-			}
-			case NOT_PUNC: {
-				printf("<PUNCTUATOR, %d, %s>\n", token, yytext);
-				break;
-			}
+			
 			case DIVIDE_PUNC: {
 				printf("<PUNCTUATOR, %d, %s>\n", token, yytext);
 				break;
@@ -321,18 +316,6 @@ int main (int argc, char** argv) {
 			}
 			case COMMA_PUNC: {
 				printf("<PUNCTUATOR, %d, %s>\n", token, yytext);
-				break;
-			}
-			case HASTAG_PUNC: {
-				printf("<PUNCTUATOR, %d, %s>\n", token, yytext);
-				break;
-			}
-			case SINGLELINE_COMMENT: {
-				printf ("<SINGLE LINE COMMENT, %d, %s>\n", token, yytext);
-				break;
-			}
-			case MULTILINE_COMMENT: {
-				printf ("<MULTIPLE LINE COMMENT, %d, %s>\n", token, yytext);
 				break;
 			}
 			default : {

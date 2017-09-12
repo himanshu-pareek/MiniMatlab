@@ -4,7 +4,7 @@ void keywords_and_op_check() {
 
   unsigned int num = 10;
   signed int i;
-  _Bool B = 1;
+  Bool B = 1;
 
 
   char * s1 = 'comp';

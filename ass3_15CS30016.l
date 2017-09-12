@@ -1,5 +1,5 @@
 %{
-#include "ass3_15CS30016.h"
+#include "ass3_15CS30016.tab.c"
 %}
 
 %option nounput yylineno
@@ -88,6 +88,7 @@ BIT_AND_EQUAL_PUNC	"&="
 XOR_EQUAL_PUNC		"^="
 BIT_OR_EQUAL_PUNC	"|="
 COMMA_PUNC		","
+INVERSE_PUNC	".\'"
 HASTAG_PUNC		"#"
 SINGLE_LINE_COMMENT	"//"[^\r\n]*[\r\n]
 WHITESPACE		[ \t\n]
@@ -118,10 +119,10 @@ WHITESPACE		[ \t\n]
 {ELSE}					{ return KEYWORD_ELSE; }
 {MATRIX}				{ return KEYWORD_MATRIX; }
 {IDENTIFIER}				{ return IDENTIFIER; }
-{INTEGER_CONSTANT}			{ return INTEGER_CONSTANT; }
-{FLOATING_CONSTANT}			{ return FLOATING_CONSTANT; }
-{CHARACTER_CONSTANT}			{ return CHARACTER_CONSTANT; }
-{ZERO_CONSTANT}				{ return ZERO_CONSTANT; }
+{INTEGER_CONSTANT}			{ return CONSTANT; }
+{FLOATING_CONSTANT}			{ return CONSTANT; }
+{CHARACTER_CONSTANT}			{ return CONSTANT; }
+{ZERO_CONSTANT}				{ return CONSTANT; }
 {STRING_LITERAL}			{ return STRING_LITERAL; }
 {LEFT_SQUARE_BRAC_PUNC}			{ return LEFT_SQUARE_BRAC_PUNC; }
 {RIGHT_SQUARE_BRAC_PUNC}		{ return RIGHT_SQUARE_BRAC_PUNC; }
@@ -137,8 +138,8 @@ WHITESPACE		[ \t\n]
 {MULT_PUNC}				{ return MULT_PUNC; }
 {PLUS_PUNC}				{ return PLUS_PUNC; }
 {MINUS_PUNC}				{ return MINUS_PUNC; }
-{NEGATION_PUNC}				{ return NEGATION_PUNC; }
-{NOT_PUNC}				{ return NOT_PUNC; }
+{NEGATION_PUNC}				{ printf ("<NEGATION PUNCTUATOR>\n"); }
+{NOT_PUNC}				{ printf ("<NOT PUNCTUATION>\n"); }
 {DIVIDE_PUNC}				{ return DIVIDE_PUNC; }
 {MOD_PUNC}				{ return MOD_PUNC; }
 {LEFT_SHIFT_PUNC}			{ return LEFT_SHIFT_PUNC; }
@@ -168,15 +169,15 @@ WHITESPACE		[ \t\n]
 {XOR_EQUAL_PUNC}			{ return XOR_EQUAL_PUNC; }
 {BIT_OR_EQUAL_PUNC}			{ return BIT_OR_EQUAL_PUNC; }
 {COMMA_PUNC}				{ return COMMA_PUNC; }
-{HASTAG_PUNC}				{ return HASTAG_PUNC; }
-{SINGLE_LINE_COMMENT}			{ return SINGLELINE_COMMENT; }
+{INVERSE_PUNC}				{ return INVERSE_PUNC; }
+{HASTAG_PUNC}				{ printf ("<HASTAG PUNCTUATOR>\n"); }
+{SINGLE_LINE_COMMENT}			{ printf ("<SINGLE LINE COMMENT>\n"); }
 "/*"					BEGIN(comment);
 <comment>[^*\n]*			/* comment */
 <comment>"*"+[^*/\n]*			/* comment */
 <comment>\n				/* comment */
-<comment>"*"+"/"			BEGIN(INITIAL); { return MULTILINE_COMMENT; }
+<comment>"*"+"/"			BEGIN(INITIAL); { printf ("<MULTILINE_COMMENT>\n"); }
 {WHITESPACE}				{ /* Ignore whitespace */ }
-.					{ printf ("Unexpected character\n"); }
 
 %%
 

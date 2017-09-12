@@ -3,7 +3,7 @@
   
 void getCofactor(Matrix mat, Matrix temp, int p, int q, int N)
 {
-    int i = 0, j = 0, row, col;
+  int i = 0, j = 0, row, col;
  
     for (row = 0; row < n; row++)
     {
@@ -76,3 +76,4 @@ int compute_determinant()
     printFlt(determinantOfMatrix(mat, 4));
     return 0;
 }
+
